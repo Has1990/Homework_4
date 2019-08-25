@@ -1,16 +1,23 @@
 // Task 1
 
-function getFibonachi(result){
-    let a = 0;
-    let b = 1;
-    result = b;
-    for (let i = 0; i <= 100; i++){
-        result = a + b;
-        a = b;
-        b = result;
-        console.log(result);
+function getFibonachi(arr) {
+
+    let result = [0, 1, 1]
+    for (let i = 3; i <= arr; i++) {
+
+        let prev = result[i - 1];
+        let next = result[i - 2];
+
+
+        while (prev + next <= arr) {
+            result.push(prev + next);
+            console.log(result);
+        }
+        break;
+
     }
 }
+
 getFibonachi(8);
 
 
@@ -25,8 +32,10 @@ function getTwoDigit(n) {
 
     for (let i = 0; i < points.length; i++) {
         if(points[i] < 10){
-         points[i] = "0" + points[i];
+            let num = parseInt("0");
+            points[i] = num + points[i];
         }
+
         console.log(points[i]);
     }
 }
@@ -35,14 +44,17 @@ getTwoDigit();
 
 // Task 3
 
-
 function getCount(number) {
 
 
     let product = 1;
     let sum = 0;
+    if (number <= 0) {
+        number = Math.abs(number);
+    }
 
-    while(number !== 0) {
+
+    while (number !== 0) {
         product = product * (number % 10);
         sum = sum + (number % 10);
         number = Math.floor(number / 10);
@@ -54,13 +66,14 @@ function getCount(number) {
         console.log("Reminder is " + (product % sum));
     }
 }
-getCount(30);
+
+getCount(-30);
 
 // Task 4
 
 function getDifferenceOfMaxMin(array) {
-    let max = 0;
-    let min = 0;
+    let max = array[0];
+    let min = array[0];
     let difference;
 
     for (let i = 0; i < array.length; i++) {
@@ -74,12 +87,11 @@ function getDifferenceOfMaxMin(array) {
 
     difference = max - min;
 
-    for (let j = 0; j < array.length; j++) {
-        if (array[j] === difference) {
-            console.log(true)
-        } else {
-            console.log(false);
-        }
+
+    if (array.includes(difference)) {
+        console.log(true);
+    } else {
+        console.log(false);
     }
 }
 
